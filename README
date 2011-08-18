@@ -1,0 +1,55 @@
+To get this running:
+1. include Flot
+2. include my timeview.js
+3. use the json format like below
+--------------------------------------
+//linear data
+variable1 = {
+   label:"var1",
+   data:[
+      {t:"October 13, 1975 11:13:00",v:100},
+      {t:"October 14, 1975 11:13:00",v:200}
+   ]
+}
+
+//block data
+variable2 = {
+   label:"var1",
+   data:[
+      {t:"October 13, 1975 14:13:00",v:0},
+      {t:"October 13, 1975 15:13:00",v:1},
+      {t:"October 13, 1975 16:13:00",v:0},
+      {t:"October 13, 1975 17:13:00",v:1},
+      {t:"October 13, 1975 18:13:00",v:0},
+      {t:"October 13, 1975 19:13:00",v:1},
+      {t:"October 13, 1975 20:13:00",v:0}
+   ]
+}
+
+
+//event data
+variable3 = {
+   label:"var3",
+   data:[
+      {t:"October 13, 1975 00:00:00",v:"eggs"},
+      {t:"October 14, 1975 00:00:00",v:"bacon"}
+   ]
+}
+---------------------------------------------
+
+4. make the conf object that referneces 
+   a.the html element where to put the input form
+   b.the html element of the div containing the plot
+   c.the list of varaibles to look at
+
+conf = {
+	data:[variable1,variable2,variable3],
+	inputParent:$("#inputs"),
+	plotDiv:$("#plotdiv")
+}
+
+
+5. run the 
+timeplot.init(conf).createInputForm();
+
+
