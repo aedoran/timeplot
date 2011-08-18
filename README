@@ -14,7 +14,7 @@ variable1 = {
 
 //block data
 variable2 = {
-   label:"var1",
+   label:"var2",
    data:[
       {t:"October 13, 1975 14:13:00",v:0},
       {t:"October 13, 1975 15:13:00",v:1},
