@@ -10,8 +10,7 @@ var timeplot = {
 	},
 	getOptionsForData:function(d) {
 		options = [];
-		kind = -1;
-		console.log(d.data[0]);
+		kind = -1;		
 		if (isNaN(d.data[0].v)) {
 			kind = 1;
 		} else {
@@ -81,7 +80,6 @@ var timeplot = {
 			t = document.createElement('table');
 			for (a in this.conf.data) {
 				row = this.createRow(this.conf.data[a]);
-				console.log(row);
 				t.appendChild(row);
 			}
 			b = document.createElement('input');
@@ -106,8 +104,7 @@ var timeplot = {
 	convertDataToFlot:function(data) {
 	    var d = [];
 	    for (var a in data) {
-		  console.log(a);
-		  console.log(data[a]);
+
 	      time = new Date(data[a].t);
 		  if (isNaN(data[a].v)) {
 			d.push([time,1]);
@@ -147,7 +144,6 @@ var timeplot = {
 			plots = this.plotMe;
 		}
 		for (a in plots) {
-			console.log(a);
 			var i = plots[a];
 			fdata = this.convertDataToFlot(i.data);
 			axisIndex = this.addAxis(i);
@@ -188,11 +184,9 @@ var timeplot = {
 			this.axes[b].max=blockcount-currentblock;
 			this.axes[b].show=false;
 			currentblock = currentblock+1;
-		}
-		console.log('yo');
+		}		
 		currentanno = 0;
-		for (a in annotations) {
-			console.log(annotations[a]);
+		for (a in annotations) {			
 			b = annotations[a].yaxis-1;	
 			this.axes[b].min=0-currentanno;
 			this.axes[b].max=annotationscount-currentanno;
@@ -201,7 +195,6 @@ var timeplot = {
 		}		
 		var p = $.plot(this.conf.plotDiv, dataPlots,{yaxes:this.axes,xaxis:{mode:'time'}});
 		
-		//
 		for (a in annotations) {
 			d = annotations[a].item;
 			yaxis=annotations[a].yaxis;
@@ -210,8 +203,7 @@ var timeplot = {
 				_date = new Date(i.t);
 				var o;
 				o = p.pointOffset({x:_date.getTime(),y:1,yaxis:yaxis});
-				series = p.getData();
-				console.log(series[annotations[a].itemIndex].color);
+				series = p.getData();	
 				this.conf.plotDiv.append('<div style="position:absolute;left:' + (o.left + 4) + 'px;top:' + o.top + 'px;color:'+series[annotations[a].itemIndex].color+';">'+i.v+'</div>');
 			}
 		}
