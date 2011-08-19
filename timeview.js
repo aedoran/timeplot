@@ -136,7 +136,7 @@ var timeplot = {
 		var dataPlots = [];
 		var blockcount = 0;
 		var blockIndexes = [];
-		var annotationscount = [];
+		var annotationscount = 0;
 		var annotations = [];
 		var plots = this.conf.data;
 
@@ -189,7 +189,7 @@ var timeplot = {
 		for (a in annotations) {			
 			b = annotations[a].yaxis-1;	
 			this.axes[b].min=0-currentanno;
-			this.axes[b].max=annotationscount-currentanno;
+			this.axes[b].max=1+annotationscount-currentanno;
 			this.axes[b].show=false;
 			currentanno = currentanno+1;
 		}		
@@ -204,7 +204,7 @@ var timeplot = {
 				var o;
 				o = p.pointOffset({x:_date.getTime(),y:1,yaxis:yaxis});
 				series = p.getData();	
-				this.conf.plotDiv.append('<div style="position:absolute;left:' + (o.left + 4) + 'px;top:' + o.top + 'px;color:'+series[annotations[a].itemIndex].color+';">'+i.v+'</div>');
+				this.conf.plotDiv.append('<div class="annotation annotation-'+d.label+'" style="position:absolute;left:' + (o.left + 4) + 'px;top:' + o.top + 'px;color:'+series[annotations[a].itemIndex].color+';">'+i.v+'</div>');
 			}
 		}
 		
