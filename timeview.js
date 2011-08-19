@@ -136,7 +136,7 @@ var timeplot = {
 		var dataPlots = [];
 		var blockcount = 0;
 		var blockIndexes = [];
-		var annotationscount = [];
+		var annotationscount = 0;
 		var annotations = [];
 		var plots = this.conf.data;
 
